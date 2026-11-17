@@ -1,1 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estoque de Roupas</title>
+<!-- Link para o CSS -->
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
 
+<header>
+  <h1>👗 Estoque de Roupas</h1>
+  <p>Sistema integrado de gestão</p>
+</header>
+
+<nav>
+  <button data-secao="produtos" class="ativo">Produtos</button>
+  <button data-secao="categorias">Categorias</button>
+  <button data-secao="fornecedores">Fornecedores</button>
+</nav>
+
+<main>
+  <section id="secao-produtos" class="secao ativa">
+    <div class="topo-secao">
+      <h2>Produtos</h2>
+      <button class="btn" onclick="abrirModalProduto()">+ Novo Produto</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th><th>Nome</th><th>Preço</th><th>Qtd</th>
+          <th>Status</th><th>Fornecedor</th><th>Categoria</th><th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-produtos"></tbody>
+    </table>
+  </section>
+
+  <section id="secao-categorias" class="secao">
+    <div class="topo-secao">
+      <h2>Categorias</h2>
+      <button class="btn" onclick="abrirModalCategoria()">+ Nova Categoria</button>
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>Ações</th></tr></thead>
+      <tbody id="tabela-categorias"></tbody>
+    </table>
+  </section>
+
+  <section id="secao-fornecedores" class="secao">
+    <div class="topo-secao">
+      <h2>Fornecedores</h2>
+      <button class="btn" onclick="abrirModalFornecedor()">+ Novo Fornecedor</button>
+    </div>
+    <table>
+      <thead><tr><th>ID</th><th>Nome</th><th>CNPJ</th><th>Ações</th></tr></thead>
+      <tbody id="tabela-fornecedores"></tbody>
+    </table>
+  </section>
+</main>
+
+<!-- MODAIS -->
+<div class="modal-fundo" id="modal-produto">
+  <div class="modal">
+    <h3 id="titulo-modal-produto">Novo Produto</h3>
+    <input type="hidden" id="produto-id">
+    <div class="form-group">
+      <label>Nome do Produto</label>
+      <input id="produto-nome" type="text" placeholder="Ex: Camiseta Básica">
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Preço (R$)</label>
+        <input id="produto-preco" type="number" step="0.01" min="0" placeholder="0.00">
+      </div>
+      <div class="form-group">
+        <label>Quantidade</label>
+        <input id="produto-quantidade" type="number" min="0" placeholder="0">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Status</label>
+      <select id="produto-ativo">
+        <option value="1">Ativo</option>
+        <option value="0">Inativo</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Fornecedor</label>
+      <div class="input-group">
+        <select id="produto-fornecedor"></select>
+        <button class="btn btn-sm" onclick="abrirModalFornecedorAtalho()" title="Cadastrar novo fornecedor">+</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Categoria</label>
+      <div class="input-group">
+        <select id="produto-categoria"></select>
+        <button class="btn btn-sm" onclick="abrirModalCategoriaAtalho()" title="Cadastrar nova categoria">+</button>
+      </div>
+    </div>
+    <div class="modal-acoes">
+      <button class="btn btn-sec" onclick="fecharModal('modal-produto')">Cancelar</button>
+      <button class="btn" onclick="salvarProduto()">Salvar Produto</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-fundo" id="modal-categoria" style="z-index: 110;">
+  <div class="modal" style="max-width: 400px;">
+    <h3 id="titulo-modal-categoria">Nova Categoria</h3>
+    <input type="hidden" id="categoria-id">
+    <div class="form-group">
+      <label>Nome da Categoria</label>
+      <input id="categoria-nome" type="text" placeholder="Ex: Camisetas">
+    </div>
+    <div class="modal-acoes">
+      <button class="btn btn-sec" onclick="fecharModal('modal-categoria')">Cancelar</button>
+      <button class="btn" onclick="salvarCategoria()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-fundo" id="modal-fornecedor" style="z-index: 110;">
+  <div class="modal" style="max-width: 400px;">
+    <h3 id="titulo-modal-fornecedor">Novo Fornecedor</h3>
+    <input type="hidden" id="fornecedor-id">
+    <div class="form-group">
+      <label>Nome do Fornecedor</label>
+      <input id="fornecedor-nome" type="text" placeholder="Ex: Tecidos Silva">
+    </div>
+    <div class="form-group">
+      <label>CNPJ</label>
+      <input id="fornecedor-cnpj" type="text" placeholder="00.000.000/0000-00">
+    </div>
+    <div class="modal-acoes">
+      <button class="btn btn-sec" onclick="fecharModal('modal-fornecedor')">Cancelar</button>
+      <button class="btn" onclick="salvarFornecedor()">Salvar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Link para o JS -->
+<script src="/static/script.js"></script>
+</body>
+</html>
