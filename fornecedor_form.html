@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Cadastro de Fornecedor | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="pagina">
+
+    <div class="pagina-cabecalho">
+        <div>
+            <h2 id="titulo-formulario">Cadastrar fornecedor</h2>
+            <p>Preencha os dados do fornecedor.</p>
+        </div>
+
+        <a href="/pagina/fornecedores" class="botao-secundario">
+            Voltar
+        </a>
+    </div>
+
+    <form id="form-fornecedor">
+
+        <input type="hidden" id="fornecedor-id">
+
+        <div class="campo">
+            <label for="nome">Nome do fornecedor</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="campo">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" id="cnpj" name="cnpj"
+                   placeholder="00.000.000/0000-00" required>
+        </div>
+
+        <button type="submit" class="botao">
+            Salvar fornecedor
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='fornecedores.js') }}"></script>
+{% endblock %}

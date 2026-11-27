@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Fornecedores | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="pagina">
+
+    <div class="pagina-cabecalho">
+        <div>
+            <h2>Fornecedores</h2>
+            <p>Consulte e gerencie os fornecedores cadastrados.</p>
+        </div>
+
+        <a href="/pagina/fornecedor/novo" class="botao">
+            Cadastrar fornecedor
+        </a>
+    </div>
+
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>CNPJ</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista-fornecedores">
+                <tr>
+                    <td colspan="4">Carregando fornecedores...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='fornecedores.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,76 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Cadastro de Produto | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="pagina">
+
+    <div class="pagina-cabecalho">
+        <div>
+            <h2 id="titulo-formulario">Cadastrar produto</h2>
+            <p>Preencha os dados para cadastrar ou atualizar um produto.</p>
+        </div>
+
+        <a href="/pagina/produtos" class="botao-secundario">
+            Voltar
+        </a>
+    </div>
+
+    <form id="form-produto">
+
+        <input type="hidden" id="produto-id">
+
+        <div class="campo">
+            <label for="nome">Nome do produto</label>
+            <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="campo">
+            <label for="preco">Preço (R$)</label>
+            <input type="number" id="preco" name="preco"
+                   min="0" step="0.01" required>
+        </div>
+
+        <div class="campo">
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" name="quantidade"
+                   min="0" required>
+        </div>
+
+        <div class="campo">
+            <label for="fornecedor_id">Fornecedor</label>
+            <select id="fornecedor_id" name="fornecedor_id" required>
+                <option value="">Selecione um fornecedor</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="categoria_id">Categoria</label>
+            <select id="categoria_id" name="categoria_id" required>
+                <option value="">Selecione uma categoria</option>
+            </select>
+        </div>
+
+        <div class="campo">
+            <label for="ativo">Status</label>
+            <select id="ativo" name="ativo" required>
+                <option value="1">Ativo</option>
+                <option value="0">Inativo</option>
+            </select>
+        </div>
+
+        <button type="submit" class="botao">
+            Salvar produto
+        </button>
+
+    </form>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='produtos.js') }}"></script>
+{% endblock %}

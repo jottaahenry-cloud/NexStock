@@ -1,0 +1,48 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Produtos | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="pagina">
+
+    <div class="pagina-cabecalho">
+        <div>
+            <h2>Produtos</h2>
+            <p>Consulte e gerencie os produtos cadastrados no estoque.</p>
+        </div>
+
+        <a href="/pagina/produto/novo" class="botao">
+            Cadastrar produto
+        </a>
+    </div>
+
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Preço</th>
+                    <th>Quantidade</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista-produtos">
+                <tr>
+                    <td colspan="6">Carregando produtos...</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='produtos.js') }}"></script>
+{% endblock %}

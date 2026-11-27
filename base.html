@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block titulo %}Sistema de Estoque{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    {% block estilos %}{% endblock %}
+</head>
+<body>
+
+    <header>
+        <h1>Sistema de Gerenciamento de Estoque</h1>
+
+        <nav>
+            <a href="/">Início</a>
+            <a href="/pagina/produtos">Produtos</a>
+            <a href="/pagina/categorias">Categorias</a>
+            <a href="/pagina/fornecedores">Fornecedores</a>
+            <a href="/pagina/relatorios">Relatórios</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block conteudo %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>Sistema de Gerenciamento de Estoque de Roupas</p>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+
+</body>
+</html>

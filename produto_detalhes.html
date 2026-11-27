@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Detalhes do Produto | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="pagina">
+
+    <div class="pagina-cabecalho">
+        <div>
+            <h2>Detalhes do Produto</h2>
+            <p>Informações completas do produto selecionado.</p>
+        </div>
+
+        <a href="/pagina/produtos" class="botao-secundario">
+            Voltar
+        </a>
+    </div>
+
+    <div id="detalhes-produto" class="detalhes-container">
+        <p>Carregando informações do produto...</p>
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='produtos.js') }}"></script>
+{% endblock %}

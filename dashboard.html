@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block titulo %}Início | Sistema de Estoque{% endblock %}
+
+{% block conteudo %}
+
+<section class="boas-vindas">
+    <h2>Bem-vindo ao Sistema de Estoque!</h2>
+    <p>Gerencie os produtos, fornecedores e categorias da sua loja.</p>
+</section>
+
+<section class="painel">
+
+    <h2>Painel de gerenciamento</h2>
+
+    <div class="painel-cards">
+
+        <article class="card">
+            <h3>Produtos</h3>
+            <p>Consulte, cadastre e gerencie os produtos do estoque.</p>
+            <a href="/pagina/produtos">Acessar produtos</a>
+        </article>
+
+        <article class="card">
+            <h3>Categorias</h3>
+            <p>Organize os produtos por categorias.</p>
+            <a href="/pagina/categorias">Acessar categorias</a>
+        </article>
+
+        <article class="card">
+            <h3>Fornecedores</h3>
+            <p>Consulte e gerencie os fornecedores cadastrados.</p>
+            <a href="/pagina/fornecedores">Acessar fornecedores</a>
+        </article>
+
+        <article class="card">
+            <h3>Relatórios</h3>
+            <p>Visualize informações e dados do estoque.</p>
+            <a href="/pagina/relatorios">Acessar relatórios</a>
+        </article>
+
+    </div>
+
+</section>
+
+{% endblock %}
